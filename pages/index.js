@@ -1,5 +1,6 @@
 import LinkButton from "@/components/LinkButton";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -7,6 +8,15 @@ export default function Home() {
       className={`flex min-h-screen flex-col items-center justify-between p-24`}
     >
       <div className="hero-information-group flex flex-col justify-center items-center gap-12">
+        <div className="heart-image">
+          <Image
+            src="/heart.png"
+            alt="Heart illustration"
+            width={"200"}
+            height={"200"}
+            objectFit="contain"
+          />
+        </div>
         <div className="nuestra-boda flex flex-col justify-center items-center gap-4">
           <p className="uppercase font-typewriter font-medium text-primary">
             Nuestra boda
@@ -35,7 +45,7 @@ export default function Home() {
           </Link>
         </div>
         <div className="rsvp-button">
-          <LinkButton href="/buscar">Confirmar asistencia</LinkButton>
+          <LinkButton href="/confirmar">Confirmar asistencia</LinkButton>
         </div>
       </div>
     </main>
