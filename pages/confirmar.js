@@ -2,9 +2,24 @@ import React from "react";
 import Link from "next/link";
 
 const Buscar = () => {
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Wiiiiii");
+
+    const request = await fetch("/api/confirm", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: e.target.name.value,
+        phone: e.target.phone.value,
+        email: e.target.email.value,
+        confirmed: e.target.confirmation.checked,
+      }),
+    });
+
+    const response = await request.json();
+    console.log(response);
   };
 
   return (
@@ -48,6 +63,7 @@ const Buscar = () => {
         </label>
         <input
           type="text"
+          name="name"
           className="border-2 border-primary rounded-2xl px-4 py-2 w-full"
           placeholder="Escriba su nombre..."
         />
@@ -56,6 +72,7 @@ const Buscar = () => {
         </label>
         <input
           type="email"
+          name="email"
           className="border-2 border-primary rounded-2xl px-4 py-2 w-full"
           placeholder="Escriba su correo electrónico..."
         />
@@ -64,9 +81,16 @@ const Buscar = () => {
         </label>
         <input
           type="tel"
+          name="phone"
           className="border-2 border-primary rounded-2xl px-4 py-2 w-full"
           placeholder="+52 XXX XXX XXXX"
         />
+        <div className="confirm-section mt-4 flex justify-start items-center gap-2">
+          <input type="checkbox" name="confirmation" id="confirmation" value="confirmed" className="w-6 h-6" />
+          <label htmlFor="name" className="text-primary text-xl font-semibold">
+            Confirmo mi asistencia
+          </label>
+        </div>
         <button
           type="submit"
           className="bg-primary text-white w-full rounded-2xl px-4 py-4 mt-4 flex justify-between items-center"
