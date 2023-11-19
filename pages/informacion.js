@@ -4,7 +4,7 @@ import Link from "next/link";
 const Informacion = () => {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center gap-16 p-24">
-      <div className="return-to-home fixed top-0 left-0 p-4">
+      <div className="return-to-home fixed top-0 left-0 p-5">
         <Link
           href="/"
           className="group flex justify-start items-center gap-2 text-primary font-typewriter"
@@ -57,7 +57,10 @@ const Informacion = () => {
         </div>
         <div className="datos-del-hotel">
           <h2 className="text-2xl font-bold">Datos del hotel</h2>
-          <p>pending jiji</p>
+          <p>
+            Dorados Convention and Resort. <br />
+            Teléfono. 735 356 0122
+          </p>
         </div>
       </div>
     </div>

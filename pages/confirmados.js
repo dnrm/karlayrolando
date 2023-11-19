@@ -31,28 +31,34 @@ const Confirmados = () => {
           ) : null}
         </div>
         <div className="confirmed-guests block max-w-5xl mx-auto">
-          <div className="table-heading grid grid-cols-4 place-items-stretch gap-24 font-typewriter text-primary font-bold p-4 min-w-full text-lg">
-            <div className="table-cell">Nombre</div>
-            <div className="table-cell">Teléfono</div>
-            <div className="table-cell">Correo electrónico</div>
-            <div className="table-cell">Confirmó</div>
-          </div>
-          <hr />
-          <div className="data flex flex-col justify-start items-between">
-            {data?.map((guest) => (
-              <div
-                key={guest.id}
-                className="grid grid-cols-4 justify-center items-center gap-8 hover:bg-neutral-100 px-4 py-4"
-              >
-                <div className="table-cell">{guest.name}</div>
-                <div className="table-cell">{guest.phone}</div>
-                <div className="table-cell">{guest.email}</div>
-                <div className="table-cell">
-                  {guest.confirmed ? "Si" : "No"}
-                </div>
+          {data && data.length > 0 ? (
+            <>
+              <div className="table-heading grid grid-cols-3 place-items-stretch gap-36 font-typewriter text-primary font-bold p-4 min-w-full text-lg">
+                <div className="table-cell">Nombre</div>
+                <div className="table-cell">Teléfono</div>
+                <div className="table-cell">Correo electrónico</div>
               </div>
-            ))}
-          </div>
+              <hr />
+              <div className="data flex flex-col justify-start items-between">
+                {data.map((guest) => (
+                  <div
+                    key={guest.id}
+                    className="grid grid-cols-3 justify-center items-center gap-36 hover:bg-neutral-100 px-4 py-4"
+                  >
+                    <div className="table-cell">{guest.name}</div>
+                    <div className="table-cell">{guest.phone}</div>
+                    <div className="table-cell">{guest.email}</div>
+                  </div>
+                ))}
+              </div>
+            </>
+          ) : (
+            <div className="flex justify-center items-center">
+              <p className="font-typewriter text-2xl text-primary">
+                No hay invitados confirmados hasta ahora
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>

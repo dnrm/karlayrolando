@@ -1,30 +1,45 @@
 import React from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { toast, Toaster } from "react-hot-toast";
 
 const Buscar = () => {
+  const router = useRouter();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const request = await fetch("/api/confirm", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: e.target.name.value,
-        phone: e.target.phone.value,
-        email: e.target.email.value,
-        confirmed: e.target.confirmation.checked,
-      }),
-    });
+    try {
+      const request = await fetch("/api/confirm", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: e.target.name.value,
+          phone: e.target.phone.value,
+          email: e.target.email.value,
+        }),
+      });
 
-    const response = await request.json();
-    console.log(response);
+      if (request.status === 400) {
+        const response = await request.json();
+        return toast.error(response.error[0].message);
+      }
+
+      const response = await request.json();
+
+      router.push("/exito");
+    } catch (e) {
+      console.log(e)
+      toast.error('error JADSFJHASKDFHJAKSDJFHKASDHFKAHSDFKH')
+    }
   };
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center gap-16 px-5 py-24">
-      <div className="return-to-home fixed top-0 left-0 p-4">
+      <Toaster />
+      <div className="return-to-home fixed top-0 left-0 p-5">
         <Link
           href="/"
           className="group flex justify-start items-center gap-2 text-primary font-typewriter"
@@ -58,39 +73,45 @@ const Buscar = () => {
         onSubmit={handleSubmit}
         className="name-input-group max-w-3xl w-full flex flex-col justify-center items-start gap-4 p-6 shadow-2xl bg-white rounded-2xl"
       >
-        <label htmlFor="name" className="font-typewriter text-primary text-xl font-semibold">
+        <label
+          htmlFor="name"
+          className="font-typewriter text-primary text-xl font-semibold"
+        >
           Nombre
         </label>
         <input
           type="text"
+          required={true}
           name="name"
           className="border-2 border-primary rounded-2xl px-4 py-2 w-full"
           placeholder="Escriba su nombre..."
         />
-        <label htmlFor="name" className="font-typewriter text-primary text-xl font-semibold">
+        <label
+          htmlFor="name"
+          className="font-typewriter text-primary text-xl font-semibold"
+        >
           Correo electrónico
         </label>
         <input
           type="email"
+          required={true}
           name="email"
           className="border-2 border-primary rounded-2xl px-4 py-2 w-full"
           placeholder="Escriba su correo electrónico..."
         />
-        <label htmlFor="name" className="font-typewriter text-primary text-xl font-semibold">
+        <label
+          htmlFor="name"
+          className="font-typewriter text-primary text-xl font-semibold"
+        >
           Número de teléfono
         </label>
         <input
           type="tel"
+          required={true}
           name="phone"
           className="border-2 border-primary rounded-2xl px-4 py-2 w-full"
           placeholder="+52 XXX XXX XXXX"
         />
-        <div className="confirm-section mt-4 flex justify-start items-center gap-2">
-          <input type="checkbox" name="confirmation" id="confirmation" value="confirmed" className="w-6 h-6" />
-          <label htmlFor="name" className="text-primary text-xl font-semibold">
-            Confirmo mi asistencia
-          </label>
-        </div>
         <button
           type="submit"
           className="bg-primary text-white w-full rounded-2xl px-5 py-4 mt-4 flex justify-between items-center"

@@ -15,7 +15,7 @@ const Navbar = () => {
             objectFit="contain"
           />
         </div>
-        <p className="font-adlery text-primary text-lg">Karla y Rolando</p>
+        <p className="font-adlery text-primary text-xl">Karla y Rolando</p>
       </Link>
     </div>
   );
