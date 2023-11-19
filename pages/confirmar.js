@@ -23,7 +23,7 @@ const Buscar = () => {
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-16 p-24">
+    <div className="flex min-h-screen flex-col items-center justify-center gap-16 px-5 py-24">
       <div className="return-to-home fixed top-0 left-0 p-4">
         <Link
           href="/"
@@ -51,14 +51,14 @@ const Buscar = () => {
           Confirmar asistencia
         </h1>
         <p className="text-primary tracking-tight font-light">
-          Confirma tu asistencia directamente de esta página
+          Confirma tu asistencia directamente desde esta página
         </p>
       </div>
       <form
         onSubmit={handleSubmit}
-        className="name-input-group max-w-2xl w-full flex flex-col justify-center items-start gap-4 p-5 shadow-2xl bg-white"
+        className="name-input-group max-w-3xl w-full flex flex-col justify-center items-start gap-4 p-6 shadow-2xl bg-white rounded-2xl"
       >
-        <label htmlFor="name" className="text-primary text-xl font-semibold">
+        <label htmlFor="name" className="font-typewriter text-primary text-xl font-semibold">
           Nombre
         </label>
         <input
@@ -67,7 +67,7 @@ const Buscar = () => {
           className="border-2 border-primary rounded-2xl px-4 py-2 w-full"
           placeholder="Escriba su nombre..."
         />
-        <label htmlFor="name" className="text-primary text-xl font-semibold">
+        <label htmlFor="name" className="font-typewriter text-primary text-xl font-semibold">
           Correo electrónico
         </label>
         <input
@@ -76,7 +76,7 @@ const Buscar = () => {
           className="border-2 border-primary rounded-2xl px-4 py-2 w-full"
           placeholder="Escriba su correo electrónico..."
         />
-        <label htmlFor="name" className="text-primary text-xl font-semibold">
+        <label htmlFor="name" className="font-typewriter text-primary text-xl font-semibold">
           Número de teléfono
         </label>
         <input
@@ -93,7 +93,7 @@ const Buscar = () => {
         </div>
         <button
           type="submit"
-          className="bg-primary text-white w-full rounded-2xl px-4 py-4 mt-4 flex justify-between items-center"
+          className="bg-primary text-white w-full rounded-2xl px-5 py-4 mt-4 flex justify-between items-center"
         >
           <span>Confirmar mi asistencia</span>
           <span>

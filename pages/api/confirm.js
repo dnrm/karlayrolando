@@ -4,7 +4,7 @@ export default async function handler(req, res) {
   try {
     const { name, email, phone, confirmed } = req.body;
 
-    if (!name || !email || !phone || !confirmed) {
+    if (!name || !email || !phone) {
       return res
         .status(422)
         .send({ error: [{ message: "Fill all the fields!" }] });
