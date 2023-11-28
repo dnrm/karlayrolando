@@ -15,6 +15,7 @@ module.exports = {
       fontFamily: {
         adlery: "Adlery Pro Swash, sans-serif",
         typewriter: "itc-american-typewriter, mono",
+        sauce: "Open Sauce Sans, sans-serif",
       },
       colors: {
         primary: "#1D45AC",
